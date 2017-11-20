@@ -50,11 +50,12 @@ I2C_channel.append(0b01000000)
 I2C_channel.append(0b10000000)
 
 
-def set_TCA9548_channel(new_i2c_channel):
+def set_TCA9548_channel(new_i2c_channel, test = False):
     bus = smbus.SMBus(TCA9548A_I2C_bus_number)
-    print type(new_i2c_channel), new_i2c_channel, '\n'
-    for idx, val in enumerate(I2C_channel): print idx, val
-    print "\nchannel = ", I2C_channel[new_i2c_channel], '\n'
+    if test:
+        print type(new_i2c_channel), new_i2c_channel, '\n'
+        for idx, val in enumerate(I2C_channel): print idx, val
+        print "\nchannel = ", I2C_channel[new_i2c_channel], '\n'
     bus.write_byte(TCA9548A_I2C_address, I2C_channel[new_i2c_channel])
     time.sleep(0.1)
     print "TCA9548A I2C channel:", bin(bus.read_byte(TCA9548A_I2C_address))
