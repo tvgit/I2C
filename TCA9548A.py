@@ -32,8 +32,7 @@
 # 3. call device as usual with its original (!) channel (not 0x70)
 #
 
-
-import smbus
+import smbus   # only on Raspberry
 import time
 import sys
 
