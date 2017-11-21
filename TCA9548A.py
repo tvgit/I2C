@@ -56,9 +56,10 @@ def set_TCA9548_channel(new_i2c_channel, test = False):
         print type(new_i2c_channel), new_i2c_channel, '\n'
         for idx, val in enumerate(I2C_channel): print idx, val
         print "\nchannel = ", I2C_channel[new_i2c_channel], '\n'
+
     bus.write_byte(TCA9548A_I2C_address, I2C_channel[new_i2c_channel])
     time.sleep(0.1)
-    print "TCA9548A I2C channel:", bin(bus.read_byte(TCA9548A_I2C_address))
+    # print "TCA9548A I2C channel:", bin(bus.read_byte(TCA9548A_I2C_address))
 
 if __name__ == "__main__":
     set_TCA9548_channel(int(sys.argv[1]))
